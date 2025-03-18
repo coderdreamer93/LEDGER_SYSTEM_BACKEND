@@ -1,21 +1,17 @@
 const express = require("express");
-const {
-  registerUser,
-  loginUser,
-  getUser,
-  forgotPassword,
-  verifyOTP,
-  resetPassword,
-  assignPermissions
-} = require("../controller/authController");
-const authMiddleware = require("../middlewares/authMiddleware");
+const { registerUser, loginUser, assignPermission, getUser } = require("../controller/authController");
+const { authMiddleware } = require("../middlewares/authMiddleware");
+const { checkPermissions } = require("../middlewares/checkPermission");
 
 const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/current-user", authMiddleware, getUser);
-router.post("/assign-permissions", assignPermissions);
+
+// ✅ Assign permissions (Only if user has `can_edit` permission)
+// router.post("/assign-permissions", authMiddleware.verifyToken, checkPermissions, assignPermissions);
+router.post("/assign-permission", authMiddleware, assignPermission);
 
 
 module.exports = router;

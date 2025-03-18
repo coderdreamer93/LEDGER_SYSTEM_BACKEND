@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
 const ledgerSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     itemCode: { type: Number, unique: true }, // Auto-generated
     modelName: { type: String, required: true },
     quantity: { type: Number, required: true },
     sales: { type: Number, required: true },
     purchase: { type: Number, required: true },
     paymentType: { type: String, required: true },
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    // userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 }, { timestamps: true });
 
 // Auto-generate sequential itemCode
