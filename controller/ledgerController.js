@@ -1,4 +1,4 @@
-const Ledger = require("../models/LedgerModal");
+const Ledger = require("../models/ledgerModal");
 
 // ✅ Add Ledger Entry
 exports.addLedger = async (req, res) => {
