@@ -15,12 +15,19 @@ exports.addLedger = async (req, res) => {
 // ✅ Get All Ledgers
 exports.getAllLedgers = async (req, res) => {
     try {
-        const ledgers = await Ledger.find();
-        res.json(ledgers);
+        const userId = req.user.id; // Extract userId from authenticated request
+
+        if (!userId) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
+
+        const ledgers = await Ledger.find({ userId }); // Fetch only user's ledger entries
+        res.json({ ledgers });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 // ✅ Get Ledger by ID
 exports.getLedgerById = async (req, res) => {

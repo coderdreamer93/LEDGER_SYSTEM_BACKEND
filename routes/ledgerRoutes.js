@@ -30,5 +30,7 @@ const router = express.Router();
 router.post("/", authMiddleware, ledgerController.addLedger);
 router.put("/:id", authMiddleware, checkPermission("can_update"), ledgerController.updateLedger);
 router.delete("/:id", authMiddleware, checkPermission("can_delete"), ledgerController.deleteLedger);
+router.get("/all", authMiddleware, ledgerController.getAllLedgers);
+router.get("/:id", authMiddleware, ledgerController.getLedgerById);
 
 module.exports = router;

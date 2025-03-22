@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "LEDGER",
   "main": "index.js",
-   "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "index": "nodemon index.js",
     "frontend": "npm start --prefix ./frontend",
-    "dev": "concurrently \"npm run index\" \"npm run frontend\""
+    "dev": "concurrently \"npm run index\" \"npm run frontend\"",
+    "start": "node index.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
