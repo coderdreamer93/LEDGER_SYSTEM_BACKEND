@@ -36,6 +36,7 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoute");
 const ledger = require("./routes/ledgerRoutes")
 // const otpRoutes = require("./routes/otpRoutes"); // ✅ Import OTP Routes
+const reportRoutes = require("./routes/reportRoutes");
 
 
 // dot config
@@ -60,6 +61,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 // app.use("/api/otp", otpRoutes); // ✅ New OTP Routes
 app.use("/api/ledger", ledger)
+app.use("/api/reports", reportRoutes);
+
 // port
 const PORT = process.env.PORT || 8080;
 
