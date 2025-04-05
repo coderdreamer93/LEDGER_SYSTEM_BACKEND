@@ -3,8 +3,12 @@ const mongoose = require("mongoose");
 const ledgerSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     itemCode: { type: Number, unique: true }, // Auto-generated
-    modelName: { type: String, required: true },
-    quantity: { type: Number, required: true },
+    chequeNumber: { type: Number, unique: true },
+    itemDescription:{ type: String, required: true },
+    personName: { type: String, required: true },
+    amount:{ type: Number, required: true },
+    // modelName: { type: String, required: true },
+    // quantity: { type: Number, required: true },
     sales: { type: Number, required: true },
     purchase: { type: Number, required: true },
     paymentType: { type: String, required: true },

@@ -31,6 +31,18 @@ router.post("/", authMiddleware, ledgerController.addLedger);
 router.put("/:id", authMiddleware, checkPermission("can_update"), ledgerController.updateLedger);
 router.delete("/:id", authMiddleware, checkPermission("can_delete"), ledgerController.deleteLedger);
 router.get("/all", authMiddleware, ledgerController.getAllLedgers);
-router.get("/:id", authMiddleware, ledgerController.getLedgerById);
+
+// ✅ Route: Get ledgers where totalAmount <= 2
+// router.get("/low-amount", ledgerController.getLowAmountLedgers);
+
+// ✅ Route: Update Sales & Subtract from Purchase
+// router.put("/:id/sales", ledgerController.updateSales);
+
+// router.get("/:id", authMiddleware, ledgerController.getLedgerById);
+// router.get("/:id", authMiddleware, ledgerController.getLedgerById);
+
+// router.get("/low-purchase", ledgerController.getLowPurchaseLedgers);
+router.get("/low-purchase/:userId", ledgerController.getLowPurchaseLedgersByUserId);
+
 
 module.exports = router;

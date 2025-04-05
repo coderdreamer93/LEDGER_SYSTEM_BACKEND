@@ -26,8 +26,15 @@
 // module.exports = { checkPermissions };
 exports.checkPermission = (permission) => {
     return (req, res, next) => {
+        // console.log("User Permissions:", req.user?.permissions);
+        console.log("User Role:", req.user?.role);
         console.log("User Permissions:", req.user?.permissions);
 
+        // ✅ If user is admin, skip permission check
+        if (req.user?.role === "admin") {
+            return next(); // Admin has all permissions
+        }
+        
         if (!req.user || !req.user.permissions || !req.user.permissions[permission]) {
             return res.status(403).json({ message: "Access Denied" });
         }
